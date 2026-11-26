@@ -21,5 +21,7 @@ The `infra/packer` directory holds the Packer build for the Rocky Linux 9 golden
 
 - [**http/ks.cfg**](infra/packer/http/ks.cfg)
   Unattended Kickstart that Packer serves over HTTP. It installs a minimal Rocky Linux 9 with `qemu-guest-agent` and `cloud-init`.
+- [**rocky9-template.pkr.hcl**](infra/packer/rocky9-template.pkr.hcl)
+  Packer build that installs Rocky Linux 9 on Proxmox (UEFI, Q35), seals it and saves it as Cloud-Init template VM 9000.
 
 See the [Packer README](infra/packer/README.md) for details.
