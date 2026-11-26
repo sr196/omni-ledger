@@ -1,0 +1,5 @@
+# Packer: local variable files may hold secrets
+infra/packer/variables.pkrvars.hcl
+*.auto.pkrvars.hcl
+packer_cache/
+crash.log
