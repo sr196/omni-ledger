@@ -3,3 +3,6 @@ infra/packer/variables.pkrvars.hcl
 *.auto.pkrvars.hcl
 packer_cache/
 crash.log
+
+# Local secrets (Proxmox API tokens)
+.env
