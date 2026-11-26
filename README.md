@@ -14,3 +14,12 @@ The `infra/scripts` directory contains automation scripts for configuring a Prox
   Creates a least-privilege `AutomationRole`, the `automation@pve` service user and the `packer-token` / `terraform-token` API tokens.
 
 For detailed execution order and usage instructions, see the [Scripts README](infra/scripts/README.md).
+
+## Packer Golden Image
+
+The `infra/packer` directory holds the Packer build for the Rocky Linux 9 golden image.
+
+- [**http/ks.cfg**](infra/packer/http/ks.cfg)
+  Unattended Kickstart that Packer serves over HTTP. It installs a minimal Rocky Linux 9 with `qemu-guest-agent` and `cloud-init`.
+
+See the [Packer README](infra/packer/README.md) for details.
