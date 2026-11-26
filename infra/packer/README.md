@@ -36,7 +36,7 @@ Builds VM **9000** (`rocky9-cloudinit-template`) on Proxmox: UEFI (OVMF) on a Q3
 2. Packer serves `http/` from its built-in HTTP server, and the installer runs `ks.cfg` with no prompts.
 3. After the reboot Packer logs in over SSH as `rocky`, then patches and seals the guest:
    - `dnf -y update`
-   - `cloud-init clean --logs --seeds`
+   - `cloud-init clean --logs --seed`
    - Removes the SSH host keys and empties `machine-id` and the random seed, so each clone gets its own.
    - Locks `rocky`'s password and removes `/etc/sudoers.d/rocky`.
 4. Detaches the ISO, adds the cloud-init drive and converts the VM into a template.
@@ -59,6 +59,14 @@ export PKR_VAR_proxmox_token_secret='<PACKER_TOKEN_SECRET>' # never commit the s
 packer init .
 packer validate -var-file=variables.pkrvars.hcl .
 packer build -var-file=variables.pkrvars.hcl .
+```
+
+Or use the wrapper, which loads `PROXMOX_API_ENDPOINT`, `PACKER_TOKEN_ID` and `PACKER_TOKEN_SECRET` from the git-ignored repo-root `.env` (and `variables.pkrvars.hcl` if present):
+```bash
+cd infra/packer
+./packer.sh init
+./packer.sh validate
+./packer.sh build
 ```
 
 Any variable can be overridden with `-var name=value`, for example `vm_id`, `disk_storage_pool`, `network_bridge`, `disk_size`, `cores` or `memory`. The full list is at the top of the `.pkr.hcl` file.

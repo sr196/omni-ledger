@@ -191,7 +191,7 @@ build {
       "dnf -y update",
       "dnf clean all",
       # Reset cloud-init so clones run it from scratch
-      "cloud-init clean --logs --seeds",
+      "cloud-init clean --logs --seed",
       # Per-clone identity: sshd-keygen recreates host keys, systemd the machine-id
       "rm -f /etc/ssh/ssh_host_*",
       "truncate -s 0 /etc/machine-id",

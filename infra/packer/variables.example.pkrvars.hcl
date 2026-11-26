@@ -2,7 +2,7 @@
 # Do NOT put the token secret here; export it instead:
 #   export PKR_VAR_proxmox_token_secret='<PACKER_TOKEN_SECRET>'
 
-proxmox_url      = "https://pve.lan:8006/api2/json"
+proxmox_url      = "https://pve.lanlord.cloud/api2/json/version"
 proxmox_token_id = "automation@pve!packer-token"
 proxmox_node     = "pve"
 
